@@ -2,6 +2,7 @@ const express = require('express');
 var cors = require('cors');
 const app = express();
 const port = 3000;
+const mongoose = require('mongoose');
 
 app.use(cors());
 app.use(express.json());
@@ -34,6 +35,11 @@ const mensaje = {
     }
   ]
 };
+
+mongoose.connect('mongodb://localhost:27017/NotesConnection')
+.then(() => console.log('Conectado a MongoDB'))
+.catch((err) => console.error('Error de conexión a MongoDB:', err));
+
 
 app.get('/', (req, res) => {
   res.send(mensaje);
