@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div id="lista">
         <div>
@@ -14,16 +16,28 @@
     </div>
     <div id="note"></div>
     <div id="note2"></div>
-    <script type="module" src="js/index.js"></script>
-<!-- 
-    <form action="formulario">
-        <input type="text" name="marca" placeholder="marca">
-        <input type="text" name="matricula" placeholder="matricula">
-        <input type="text" name="color" placeholder="color">
-        <input type="text" name="averia" placeholder="averia">
-    </form> -->
 
-  
-    
+    <form id="noteForm">
+
+        <label for="content">Content:</label>
+        <input type="text" id="content" name="content" required>
+
+        <label for="creationDate">Creation Date:</label>
+        <input type="date" id="creationDate" name="creationDate" required>
+
+        <label for="type">Type:</label>
+        <select name="type" id="type">
+            <option value="crítica">crítica</option>
+            <option value="normal">normal</option>
+        </select>
+
+        <button type="submit">Add Note</button>
+    </form>
+
+
+
+    <script type="module" src="js/index.js"></script>
+
 </body>
+
 </html>

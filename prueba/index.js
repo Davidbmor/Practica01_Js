@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 app.use(cors());
-app.use(express.json()); 
+app.use(express.json());
 
 const mensaje = {
   lista: [
@@ -32,19 +32,18 @@ const mensaje = {
       creationDate: 'rojo',
       type: 'motor.'
     }
-    
   ]
 };
 
 app.get('/', (req, res) => {
   res.send(mensaje);
 });
- 
+
 app.post('/newNote', (req, res) => {
-  console.log(req.body); 
-  const p = req.body;
-  mensaje.push(p);
-  res.send('Car received'); 
+  const newNote = req.body;
+  mensaje.lista.push(newNote); 
+  console.log("Nota recibida:", newNote);
+  res.send('Nota añadida correctamente'); 
 });
 
 app.listen(port, () => {

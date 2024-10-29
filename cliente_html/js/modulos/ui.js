@@ -1,6 +1,6 @@
 export const UI =  {
     drawNotes: (notes, div) => {
-        div.innerHTML = ""; // Clear the div before adding notes
+        div.innerHTML = ""; 
 
         notes.forEach(note => {
             div.innerHTML += `

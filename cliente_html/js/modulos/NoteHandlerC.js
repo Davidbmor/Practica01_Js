@@ -7,27 +7,24 @@ export class NoteHandlerC {
     }
 
 
-    async sendNote(){
-       await fetch(`${this._url}/newNote`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                id : 'Opeeel',
-                content: '6334fe5',
-                creationDate: 'vedfsfdsrde',
-                type: 'dffdsfds.'
-            }),
-          }).then((response) => {
-            if(response.ok) {
-                console.log('Se ha enviado el coche');
-            } else {
-                console.log('No se ha podido enviar el coche');
-            }
-          })
-    }
-
+    async sendNote(noteData, onSuccesCallBack) {
+        await fetch(`${this._url}/newNote`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(noteData), 
+        }).then((response) => {
+          if (response.ok) {
+            console.log('Nota enviada con éxito');
+            onSuccesCallBack();
+          } else {
+            console.log('Error al enviar la nota');
+          }
+        }).catch((error) => {
+          console.error('Error en la petición:', error);
+        });
+      }
 
     getAllNotes(onSuccesCallBack, onErrorCallBack) {
         fetch(`${this._url}/`)
