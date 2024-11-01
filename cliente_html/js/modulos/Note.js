@@ -1,10 +1,12 @@
 export class Note {
-    constructor(id ,type, content, creationDate) {
-        this._id = id;
-        this._content = content;
-        this._creationDate = creationDate;
-        this.type = type; 
+    constructor(id, content, creationDate, type) {
+        this.id = id;
+        this.content = content;
+        this.creationDate = creationDate;
+        this.type = type;
     }
+
+
 
     get id() {
         return this._id;

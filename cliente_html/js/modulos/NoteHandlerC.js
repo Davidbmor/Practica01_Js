@@ -6,7 +6,7 @@ export class NoteHandlerC {
         this._lastQueryStatus = null;
     }
 
-
+//Envía una nueva nota al servidor mediante una petición POST.
     async sendNote(noteData, onSuccesCallBack) {
         await fetch(`${this._url}/newNote`, {
           method: 'POST',
@@ -25,9 +25,9 @@ export class NoteHandlerC {
           console.error('Error en la petición:', error);
         });
       }
-
+//Obtiene todas las notas del servidor mediante una petición GET.
     getAllNotes(onSuccesCallBack, onErrorCallBack) {
-        fetch(`${this._url}/`)
+        fetch(`${this._url}`)
             .then((datos) => {
                 datos.json().then((datos) => {
                     this._lastQueryStatus = true;
@@ -42,21 +42,5 @@ export class NoteHandlerC {
             });
     }
 
-    // async getAllCarsV2() {
-    //     let b = null;
-    //     await fetch(`${this._url}/`)
-    //         .then(async (datos) => {
-    //              await datos.json().then((datos) => {
-    //                 this._lastQueryStatus = true;
-    //                 b = datos;
-    //             }, (error) => {
-    //                 this._lastQueryStatus = false;
-    //                 return null;
-    //             })
-    //         }, (error) => {
-    //             this._lastQueryStatus = false;
-    //             return null;
-    //         });
-    //     return b;
-    // }
+ 
 }
