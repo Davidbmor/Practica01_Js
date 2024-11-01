@@ -7,35 +7,28 @@ const Note = require('./Models/Note');
 
 app.use(cors());
 app.use(express.json());
-
-const mensaje = {
-  lista: [
-    {
-      id: '1',
-      content: 'Contenido de la primera nota',
-      creationDate: '2005-01-19', 
-      type: 'crítica'
-    },
-    {
-      id: '2',
-      content: 'Contenido de la segunda nota',
-      creationDate: '2023-02-30',
-      type: 'normal'
-    },
-    {
-      id: '3',
-      content: 'Contenido de la tercera nota',
-      creationDate: '2023-10-22', 
-      type: 'motor'
-    },
-    {
-      id: '4',
-      content: 'Contenido de la cuarta nota',
-      creationDate: '2023-10-01', 
-      type: 'motor'
-    }
-  ]
-};
+const initialNotes = [
+  {
+    content: 'Contenido de la primera nota',
+    creationDate: '2005-01-19',
+    type: 'crítica'
+  },
+  {
+    content: 'Contenido de la segunda nota',
+    creationDate: '2023-02-10',  // Corrige la fecha si es necesaria
+    type: 'normal'
+  },
+  {
+    content: 'Contenido de la tercera nota',
+    creationDate: '2023-10-22',
+    type: 'normal'
+  },
+  {
+    content: 'Contenido de la cuarta nota',
+    creationDate: '2023-10-01',
+    type: 'crítica'
+  }
+];
 // Conexión a la base de datos MongoDB
 mongoose.connect('mongodb://localhost:27017/NotesConnection')
   .then(async () => {
@@ -61,8 +54,6 @@ app.get('/', async (req, res) => {
     res.status(500).send('Error al obtener las notas');
   }
 });
-
-
 // Ruta para añadir una nueva nota
 app.post('/newNote', async (req, res) => {
   const { content, creationDate, type } = req.body; //Extraa los valores del cliente y los almacena en variables
@@ -76,8 +67,6 @@ app.post('/newNote', async (req, res) => {
     res.status(500).send('Error al guardar la nota');
   }
 });
-
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
